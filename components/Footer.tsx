@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 const Footer = () => {
   const [isClient, setIsClient] = useState(false);
-
+  const router = useRouter()
   useEffect(() => {
     
     setIsClient(true);  // Only after the component mounts on the client
@@ -16,7 +16,7 @@ const Footer = () => {
   if (!isClient) {
     return null;  // Render nothing on the server
   }
-  const router = useRouter()
+  
   function buttonAction(info: { id: number; img: string; description:string}) {
      router.push("https://www.linkedin.com/in/rahul031/")
   }
