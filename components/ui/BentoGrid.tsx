@@ -1,8 +1,11 @@
+"use client";
+
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
+import Confetti from "react-confetti";
 
 import { cn } from "@/lib/utils";
 
@@ -56,6 +59,7 @@ export const BentoGridItem = ({
   const rightLists = ["ReactJS", "JavaScript", "NestJS"];
 
   const [copied, setCopied] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const defaultOptions = {
     loop: copied,
@@ -70,6 +74,13 @@ export const BentoGridItem = ({
     const text = "rahuldangre321@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
+    setShowConfetti(true);
+
+    // Stop confetti after 3 seconds
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 3000);
+
   };
 
   return (
@@ -175,12 +186,14 @@ export const BentoGridItem = ({
               {/* add rounded-md h-8 md:h-8, remove rounded-full */}
               {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
               {/* add handleCopy() for the copy the text */}
+              {showConfetti && <Confetti />}
+
               <div
                 className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
                   }`}
               >
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
-                <Lottie options={defaultOptions} height={200} width={400} />
+                {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
               </div>
 
               <MagicButton
