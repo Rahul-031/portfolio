@@ -33,7 +33,7 @@ const Experience = () => {
               <img
                 src={card.thumbnail}
                 alt={card.thumbnail}
-                className="lg:w-60 md:w-40 w-16"
+                className="lg:w-60 md:w-60 w-40"
               />
               <div className="lg:ms-5">
                 <h1 className="text-start text-xl md:text-2xl font-bold">
